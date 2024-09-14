@@ -21,9 +21,15 @@ const StMain = styled.main`
 `;
 export default function Cat() {
   const ref = useRef<HTMLElement | null>(null);
-  const exportMethodRef = useRef<
-    ((element: HTMLElement, imageFileName: string) => Promise<void>) | null
-  >(null);
+  const exportMethodRef =
+    useRef<
+      (args: {
+        element: HTMLElement;
+        imageFileName: string;
+        width?: number;
+        height?: number;
+      }) => Promise<void>
+    >();
   useEffect(() => {
     import("@heypano/pupds").then(({ exportAsImage }) => {
       exportMethodRef.current = exportAsImage;
@@ -43,7 +49,10 @@ export default function Cat() {
           onClick={() => {
             if (ref.current) {
               exportMethodRef
-                .current?.(ref.current, "wheretopet_CATNAME.png")
+                .current?.({
+                  imageFileName: "wheretopet_CATNAME.png",
+                  element: ref.current,
+                })
                 .then(() => {
                   console.log("saved");
                 });
@@ -57,6 +66,8 @@ export default function Cat() {
           ImagePaths={<CatPaths />}
           MaskPaths={<CatMaskPaths />}
           containerRef={ref}
+          patterns={[]}
+          patternIdBase={"asd"}
         />
       </StMain>
     </>
