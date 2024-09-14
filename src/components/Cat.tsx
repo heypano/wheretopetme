@@ -8,15 +8,22 @@ const DrawWithin = dynamic(() => import("@/components/DrawWithin"), {
   ssr: false,
 });
 
+const StDrawWithin = styled(DrawWithin)`
+  flex: 1;
+  flex-basis: 0;
+  min-height: 0;
+`;
+
 const StMain = styled.main`
   height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 export default function Cat() {
   const ref = useRef<HTMLElement | null>(null);
   const exportMethodRef = useRef<
     ((element: HTMLElement, imageFileName: string) => Promise<void>) | null
   >(null);
-  const exportMethod = exportMethodRef.current;
   useEffect(() => {
     import("@heypano/pupds").then(({ exportAsImage }) => {
       exportMethodRef.current = exportAsImage;
@@ -35,15 +42,17 @@ export default function Cat() {
         <button
           onClick={() => {
             if (ref.current) {
-              exportMethod?.(ref.current, "wheretopet_CATNAME.png").then(() => {
-                console.log("saved");
-              });
+              exportMethodRef
+                .current?.(ref.current, "wheretopet_CATNAME.png")
+                .then(() => {
+                  console.log("saved");
+                });
             }
           }}
         >
           Save
         </button>
-        <DrawWithin
+        <StDrawWithin
           viewBox="0 0 202.53 230.74"
           ImagePaths={<CatPaths />}
           MaskPaths={<CatMaskPaths />}

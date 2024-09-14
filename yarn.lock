@@ -167,10 +167,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.35.0.tgz#b7569632b0b788a0ca0e438235154e45d42813a7"
   integrity sha512-JXdzbRiWclLVoD8sNUjR443VVlYqiYmDVT6rGUEIEHU5YJW0gaVZwV2xgM7D4arkvASqD0IlLUVjHiFuxaftRw==
 
-"@heypano/pupds@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@heypano/pupds/-/pupds-1.0.4.tgz#3f17c12dacd5feaddd66a951dd168aadf2168ba8"
-  integrity sha512-NPYrs/eM429WEHaByMSb8REqjfdgu3MMFNhFxNELidG/BwushwgdfY8DkVWy70H4eId2OUnWZyzZPy8jrsp9Pg==
+"@heypano/pupds@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@heypano/pupds/-/pupds-1.0.6.tgz#0eeeb45e016ee962ec4ca4df288042933e4ae36c"
+  integrity sha512-OrNqQX1+B7hRst4yGvDpZiBwtWELUFRk+806JOpX4QGpgIewY/BrerncXBtw2U9X1enQycLWGOkOsNp0AGdjgQ==
   dependencies:
     html2canvas "^1.4.1"
 
