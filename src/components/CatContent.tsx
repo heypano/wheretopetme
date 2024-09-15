@@ -15,7 +15,7 @@ interface DrawWithinExtendedProps {
 }
 
 const StDrawWithin = styled(DrawWithin)`
-  flex-basis: 0;
+  flex-basis: 1;
   min-height: 0;
 `;
 
@@ -36,6 +36,11 @@ const StMain = styled.main`
 
 const StCat = styled.section`
   display: flex;
+  @media (max-width: 768px) {
+    & svg {
+      width: 100%;
+    }
+  }
 `;
 const StControls = styled.section``;
 export default function WrappedDrawWithin() {
