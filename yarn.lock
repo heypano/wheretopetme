@@ -167,10 +167,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.35.0.tgz#b7569632b0b788a0ca0e438235154e45d42813a7"
   integrity sha512-JXdzbRiWclLVoD8sNUjR443VVlYqiYmDVT6rGUEIEHU5YJW0gaVZwV2xgM7D4arkvASqD0IlLUVjHiFuxaftRw==
 
-"@heypano/pupds@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@heypano/pupds/-/pupds-2.0.1.tgz#9cbb51bc2f27257062274c7aaac3f1a2a30d5d7f"
-  integrity sha512-qvOjiP+/ZjNJIkiKilKbZHjZyWYa+0n1FN3SM7/EP1N/OR2upYAKEuQla7a2yRhhxExx5OVXXn4TCs4hmF3Q4A==
+"@heypano/pupds@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@heypano/pupds/-/pupds-2.0.9.tgz#6af38dcb997ce754fe80b96e59d3d81a7e26c79e"
+  integrity sha512-kxKPVWJ7SajojYCzxvFfFikojkzfGat5J8C/nJPQpLsG/cLdb4E0itiuS+XFVWOaaJI8rxM7DreUBxgt0yHsmw==
   dependencies:
     html2canvas "^1.4.1"
 
@@ -399,6 +399,11 @@
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
     csstype "^3.0.2"
+
+"@types/uuid@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-10.0.0.tgz#e9c07fe50da0f53dc24970cca94d619ff03f6f6d"
+  integrity sha512-7gqG38EyHgyP1S+7+xomFtL+ZNHcKv6DwNaCZmJmo1vgMugyF3TCnXVg4t1uk89mLNwnLtnY3TpOpCOyp1/xHQ==
 
 "@typescript-eslint/parser@^5.42.0":
   version "5.54.1"
@@ -2359,10 +2364,10 @@ utrie@^1.0.2:
   dependencies:
     base64-arraybuffer "^1.0.2"
 
-uuid@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
-  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
+uuid@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-10.0.0.tgz#5a95aa454e6e002725c79055fd42aaba30ca6294"
+  integrity sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"
