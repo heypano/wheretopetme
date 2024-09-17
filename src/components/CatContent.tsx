@@ -7,16 +7,20 @@ import {
 } from "@heypano/pupds";
 import React, { useMemo, useRef, useState } from "react";
 import styled from "styled-components";
-import { Pattern } from "@heypano/pupds/dist/components/DrawWithin/patterns/Patterns";
 import { v4 as uuid } from "uuid";
+import DrawConfigurationOptions from "@/components/DrawConfigurationOptions";
+import SwatchButton from "@/components/SwatchButton";
+import { PatternWithFill } from "@heypano/pupds/dist/components/DrawWithin/patterns/Patterns";
 
 interface DrawWithinExtendedProps {
   containerRef: React.Ref<HTMLElement | null>;
 }
 
 const StDrawWithin = styled(DrawWithin)`
-  flex-basis: 1;
   min-height: 0;
+`;
+const StSwatchContainer = styled.section`
+  padding: 10px 5px 0px;
 `;
 
 const StMain = styled.main`
@@ -46,7 +50,7 @@ const StControls = styled.section``;
 export default function WrappedDrawWithin() {
   const ref = useRef<HTMLElement | null>(null);
   const [currentPatternIndex, setCurrentPatternIndex] = useState(0);
-  const [patterns, setPatterns] = useState<Array<Pattern>>([
+  const [patterns, setPatterns] = useState<Array<PatternWithFill>>([
     { type: "dominoes", fill: "hotpink" },
     { type: "bankNote", fill: "red" },
   ]);
@@ -66,6 +70,27 @@ export default function WrappedDrawWithin() {
         />
       </StCat>
       <StControls>
+        {patterns.map((pattern, index) => (
+          <StSwatchContainer
+            key={index}
+            onClick={() => {
+              setCurrentPatternIndex(index);
+            }}
+          >
+            <SwatchButton
+              pattern={pattern}
+              patternIdBase={patternIdBase}
+              patternIndex={index}
+              onPatternChanged={({ type, fill }) => {
+                setPatterns((prev) => {
+                  const newPatterns = [...prev];
+                  newPatterns[index] = { type, fill };
+                  return newPatterns;
+                });
+              }}
+            />
+          </StSwatchContainer>
+        ))}
         <button
           onClick={() => {
             if (ref.current) {
@@ -88,29 +113,6 @@ export default function WrappedDrawWithin() {
         >
           Add Pattern
         </button>
-        {patterns.map(({ type, fill }, index) => (
-          <ColorPatternPicker
-            key={type}
-            patternIdBase={patternIdBase}
-            isSelected={currentPatternIndex === index}
-            patternIndex={index}
-            color={fill}
-            pattern={type}
-            setPatternIndex={setCurrentPatternIndex}
-            setColor={(fill) => {
-              const newPatterns = [...patterns];
-              const newPattern = { ...newPatterns[index], fill };
-              newPatterns[index] = newPattern;
-              setPatterns(newPatterns);
-            }}
-            setPattern={(type) => {
-              const newPatterns = [...patterns];
-              const newPattern = { ...newPatterns[index], type };
-              newPatterns[index] = newPattern;
-              setPatterns(newPatterns);
-            }}
-          />
-        ))}
       </StControls>
     </StMain>
   );
