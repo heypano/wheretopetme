@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MModal from "@/components/MModal";
 import styled from "styled-components";
 import { ColorPatternPicker, PatternPreview } from "@heypano/pupds";
-import { PatternWithFill } from "@heypano/pupds/dist/components/DrawWithin/patterns/Patterns";
+import { PatternWithDetails } from "@/components/types";
 
 const buttonSize = 50;
 const StSwatchButton = styled.button`
@@ -26,9 +26,27 @@ const StSwatchButton = styled.button`
   }
 `;
 
+const StCaption = styled.div<{ borderColor?: string }>`
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 3px solid ${({ borderColor }) => borderColor};
+`;
+
+const StInput = styled.input`
+  background-image: none;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-color: #ccc;
+  border-width: 1px;
+  border-style: dotted;
+  border-width: 7px;
+  outline: none;
+`;
 export const SwatchButton: React.FC<{
-  pattern: PatternWithFill;
-  onPatternChanged: (pattern: PatternWithFill) => void;
+  pattern: PatternWithDetails;
+  onPatternChanged: (pattern: PatternWithDetails) => void;
   patternIdBase: string;
   patternIndex: number;
 }> = ({ pattern, onPatternChanged, patternIndex, patternIdBase }) => {
@@ -39,21 +57,32 @@ export const SwatchButton: React.FC<{
         setOpen(true);
       }}
     >
-      <PatternPreview
-        patternIdBase={patternIdBase}
-        patternIndex={patternIndex}
-      />
+      <PatternPreview patternIdBase={patternIdBase} patternIndex={patternIndex}>
+        <StCaption>{pattern.caption}</StCaption>
+      </PatternPreview>
+
       <MModal
         open={open}
         onClose={(e) => {
           e.stopPropagation();
           setOpen(false);
         }}
+        footer={<div>Test</div>}
       >
+        <StInput
+          type="text"
+          value={pattern.caption}
+          onChange={(e) => {
+            onPatternChanged({ ...pattern, caption: e.target.value });
+          }}
+          placeholder="How does your cat feel about this?"
+        />
         <ColorPatternPicker
           color={pattern.fill}
           patternType={pattern.type}
-          onChange={onPatternChanged}
+          onChange={({ fill, type }) => {
+            onPatternChanged({ ...pattern, fill, type });
+          }}
         />
       </MModal>
     </StSwatchButton>
