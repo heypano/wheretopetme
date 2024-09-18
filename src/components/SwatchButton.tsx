@@ -3,28 +3,25 @@ import MModal from "@/components/MModal";
 import styled from "styled-components";
 import { ColorPatternPicker, PatternPreview } from "@heypano/pupds";
 import { PatternWithDetails } from "@/components/types";
+import { PatternDefs } from "@heypano/pupds";
 
 const buttonSize = 50;
 const StSwatchButton = styled.button`
-  position: relative;
   :root {
     --button-size: 50px;
   }
   background-color: transparent;
   width: 100%;
   height: ${buttonSize}px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   box-shadow: none;
   border: 0;
   margin: 0;
   padding: 0;
   & svg {
-    height: 100%;
-    width: 100%;
+    max-height: 50px;
+    width: 150px;
   }
-  user-select: none !important;
+  user-select: none;
 `;
 
 const StCaption = styled.div<{ borderColor?: string }>`
@@ -45,6 +42,12 @@ const StInput = styled.input`
   border-width: 7px;
   outline: none;
 `;
+
+const StPatternWithCaption = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 100px;
+`;
+
 export const SwatchButton: React.FC<{
   pattern: PatternWithDetails;
   onPatternChanged: (pattern: PatternWithDetails) => void;
@@ -52,16 +55,21 @@ export const SwatchButton: React.FC<{
   patternIndex: number;
 }> = ({ pattern, onPatternChanged, patternIndex, patternIdBase }) => {
   const [open, setOpen] = useState(false);
+  const base = `patternIdBase_prev_${patternIndex}`;
   return (
     <StSwatchButton
       onClick={() => {
         setOpen(true);
       }}
     >
-      <PatternPreview patternIdBase={patternIdBase} patternIndex={patternIndex}>
+      <StPatternWithCaption>
+        <PatternPreview
+          defs={<PatternDefs patterns={[pattern]} patternIdBase={base} />}
+          patternIdBase={base}
+          patternIndex={0}
+        />
         <StCaption>{pattern.caption}</StCaption>
-      </PatternPreview>
-
+      </StPatternWithCaption>
       <MModal
         open={open}
         onClose={(e) => {
