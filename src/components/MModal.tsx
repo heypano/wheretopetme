@@ -13,6 +13,7 @@ type MModalProps = {
 const StModalContent = styled.section`
   overflow-y: hidden;
   padding: 16px;
+  user-select: none;
 `;
 const StModalFooter = styled.section``;
 const StModalContainer = styled.section`
