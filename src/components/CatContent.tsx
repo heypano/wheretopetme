@@ -31,6 +31,10 @@ const StMain = styled.main`
   overflow: hidden;
   touch-action: none;
   overflow-scrolling: touch;
+  &,
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
 `;
 
 const StCat = styled.section`
@@ -136,7 +140,6 @@ export default function WrappedDrawWithin() {
                       newPatterns[index] = {
                         ...prev[index],
                         type,
-                        fill,
                         caption,
                       };
                       return newPatterns;

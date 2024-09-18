@@ -24,6 +24,7 @@ const StSwatchButton = styled.button`
     height: 100%;
     width: 100%;
   }
+  user-select: none !important;
 `;
 
 const StCaption = styled.div<{ borderColor?: string }>`

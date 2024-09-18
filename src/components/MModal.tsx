@@ -21,6 +21,7 @@ const StModalContainer = styled.section`
   grid-template-rows: 1fr auto;
   height: 100%; /* Assuming modal takes full height */
   overflow: hidden; /* Prevent overflow on the modal */
+  user-select: none;
 `;
 const MModal: React.FC<React.PropsWithChildren<MModalProps>> = ({
   children,
