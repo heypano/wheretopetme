@@ -130,10 +130,15 @@ export default function WrappedDrawWithin() {
                   pattern={pattern}
                   patternIdBase={patternIdBase}
                   patternIndex={index}
-                  onPatternChanged={({ type, fill }) => {
+                  onPatternChanged={({ type, fill, caption }) => {
                     setPatterns((prev) => {
                       const newPatterns = [...prev];
-                      newPatterns[index] = { ...prev[index], type, fill };
+                      newPatterns[index] = {
+                        ...prev[index],
+                        type,
+                        fill,
+                        caption,
+                      };
                       return newPatterns;
                     });
                   }}
