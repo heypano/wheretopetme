@@ -22,6 +22,10 @@ const StModalContainer = styled.section`
   height: 100%; /* Assuming modal takes full height */
   overflow: hidden; /* Prevent overflow on the modal */
   user-select: none;
+  &,
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
 `;
 const MModal: React.FC<React.PropsWithChildren<MModalProps>> = ({
   children,
