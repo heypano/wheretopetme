@@ -139,6 +139,7 @@ export default function WrappedDrawWithin() {
                       const newPatterns = [...prev];
                       newPatterns[index] = {
                         ...prev[index],
+                        fill,
                         type,
                         caption,
                       };
