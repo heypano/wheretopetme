@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
   html, body {
     padding: 0;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
   }
 
   html, body, #__next{

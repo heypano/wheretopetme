@@ -10,17 +10,19 @@ const StSwatchButton = styled.button`
   :root {
     --button-size: 50px;
   }
+  display: grid;
+  align-items: center;
   background-color: transparent;
-  width: 100%;
-  height: ${buttonSize}px;
   box-shadow: none;
   border: 0;
   margin: 0;
   padding: 0;
   & svg {
-    max-height: 50px;
-    max-width: 150px;
     width: 100%;
+    height: 100%;
+    max-height: 40px;
+    //max-width: 150px;
+    //width: 100%;
   }
   user-select: none;
 `;

@@ -18,10 +18,13 @@ interface DrawWithinExtendedProps {
 const StDrawWithin = styled(DrawWithin)`
   min-height: 0;
 `;
-const StSwatchContainer = styled.section`
+const StSwatchContainer = styled.section<{ selected: boolean }>`
   display: grid;
   grid-template-columns: 1fr;
-  padding: 10px 5px 0px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 2px solid ${({ selected }) => (selected ? "green" : "transparent")};
 `;
 
 const StMain = styled.main`
@@ -31,6 +34,12 @@ const StMain = styled.main`
   overflow: hidden;
   touch-action: none;
   overflow-scrolling: touch;
+  h2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   &,
   * {
     -webkit-tap-highlight-color: transparent;
@@ -59,7 +68,7 @@ const StContent = styled.section`
   // reverse direction in mobile
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 1fr 200px;
   }
 `;
 
@@ -101,15 +110,16 @@ export default function WrappedDrawWithin() {
   const ref = useRef<HTMLElement | null>(null);
   const [currentPatternIndex, setCurrentPatternIndex] = useState(0);
   const [patterns, setPatterns] = useState<Array<PatternWithDetails>>([
-    { caption: "Yes Please", type: "solid", fill: "#227F22FF" },
-    { caption: "Definitely Not", type: "bankNote", fill: "#7F222280" },
-    { caption: "For about 2 seconds", type: "bankNote", fill: "#7F222280" },
-    { caption: "Fuck No", type: "bankNote", fill: "#7F222280" },
+    { caption: "Yes Please", type: "solid", fill: "#227F2280" },
+    { caption: "Definitely Not", type: "bankNote", fill: "#22227F80" },
+    { caption: "For about 2 seconds", type: "dominoes", fill: "hotpink" },
+    { caption: "Fuck No", type: "diagonalLines", fill: "#227F2280" },
   ]);
 
   const patternIdBase = useMemo(() => uuid(), []);
   return (
     <StMain>
+      <h2>wheretopet.me</h2>
       <StContent ref={ref}>
         <StCat>
           <StDrawWithin
@@ -125,6 +135,7 @@ export default function WrappedDrawWithin() {
           <StSwatchContainers>
             {patterns.map((pattern, index) => (
               <StSwatchContainer
+                selected={currentPatternIndex === index}
                 key={index}
                 onClick={() => {
                   setCurrentPatternIndex(index);
