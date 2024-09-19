@@ -19,7 +19,8 @@ const StSwatchButton = styled.button`
   padding: 0;
   & svg {
     max-height: 50px;
-    width: 150px;
+    max-width: 150px;
+    width: 100%;
   }
   user-select: none;
 `;
