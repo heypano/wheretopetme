@@ -13,8 +13,26 @@ import {
   StPatternWithCaption,
   StSwatchButton,
 } from "@/components/styles/styled";
+import EditIcon from "@/components/icons/EditIcon";
+import styled from "styled-components";
 
-const buttonSize = 50;
+const StSwatchControls = styled.section`
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+`;
+const StEditIcon = styled(EditIcon)`
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+`;
+const StPatternPreview = styled(PatternPreview)`
+  svg {
+    border-radius: 5px;
+    max-height: 50px;
+    width: 100%;
+    height: 100%;
+  }
+`;
 
 export const SwatchButton: React.FC<{
   pattern: PatternWithDetails;
@@ -27,13 +45,20 @@ export const SwatchButton: React.FC<{
   return (
     <StSwatchButton>
       <StPatternWithCaption>
-        <PatternPreview
+        <StPatternPreview
           defs={<PatternDefs patterns={[pattern]} patternIdBase={base} />}
           patternIdBase={base}
           patternIndex={0}
         />
         <StCaptionContainer>
           <StCaption>{pattern.caption}</StCaption>
+          <StSwatchControls>
+            <StEditIcon
+              onClick={() => {
+                setOpen(true);
+              }}
+            />
+          </StSwatchControls>
         </StCaptionContainer>
       </StPatternWithCaption>
       <MModal
@@ -42,7 +67,6 @@ export const SwatchButton: React.FC<{
           e.stopPropagation();
           setOpen(false);
         }}
-        footer={<div>Test</div>}
       >
         <StInput
           type="text"

@@ -167,10 +167,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.35.0.tgz#b7569632b0b788a0ca0e438235154e45d42813a7"
   integrity sha512-JXdzbRiWclLVoD8sNUjR443VVlYqiYmDVT6rGUEIEHU5YJW0gaVZwV2xgM7D4arkvASqD0IlLUVjHiFuxaftRw==
 
-"@heypano/pupds@^2.0.23":
-  version "2.0.23"
-  resolved "https://registry.yarnpkg.com/@heypano/pupds/-/pupds-2.0.23.tgz#581958f5b32d71e49809b4019a68ffe5ae642f68"
-  integrity sha512-TsjATaaGihOOp6/u6YaqxGaDzcK4QHYPAGhzBxzZlCyvP6I43ymuabgjCDletM0qGAlpjTo5WAZin/brp+u+ag==
+"@heypano/pupds@^2.0.25":
+  version "2.0.25"
+  resolved "https://registry.yarnpkg.com/@heypano/pupds/-/pupds-2.0.25.tgz#9589630c48af6c9116ccb3c17510972a544845fc"
+  integrity sha512-LUFG4lj5AiWKE4cOcFnsqhGlv+XcaDj1SUy64zScDeddVdh7OfOnLGK/oH8Uw0qh0edcHagIRGHzCjIf96UjGw==
   dependencies:
     html2canvas "^1.4.1"
     react-color "^2.19.3"
