@@ -15,17 +15,13 @@ export const StSwatchContainer = styled.section<{ selected: boolean }>`
 `;
 export const StMain = styled.main`
   height: 100%;
-  display: grid;
-  grid-template-rows: max-content 1fr max-content;
-  grid-template-areas:
-    "title"
-    "cat"
-    "saveArea";
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   touch-action: none;
   overflow-scrolling: touch;
   h2 {
-    grid-area: title;
+    flex: 0;
     margin-bottom: 0;
     width: 100%;
     display: flex;
@@ -53,17 +49,19 @@ export const StSwatchContainers = styled.section`
   padding-inline: 5px;
 `;
 export const StContent = styled.section`
-  grid-area: cat;
+  flex: 1;
   display: grid;
-  justify-content: space-between;
-  grid-template-columns: 7fr 500px;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr;
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
   }
+  justify-content: space-between;
 `;
 export const StSaveArea = styled.section`
   padding-top: 5px;
-  grid-area: saveArea;
+  flex: 0;
   display: grid;
 `;
 export const StButton = styled.button`
