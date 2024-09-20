@@ -9,12 +9,9 @@ export const StSwatchContainer = styled.section<{ selected: boolean }>`
   grid-template-columns: 1fr;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-shadow: ${({ selected }) =>
-    selected
-      ? `rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;`
-      : "none"};
+  padding: 5px;
+  margin-top: 5px;
+  border: 2px solid ${({ selected }) => (selected ? "green" : "transparent")};
 `;
 export const StMain = styled.main`
   height: 100%;
@@ -43,14 +40,11 @@ export const StCat = styled.section`
   padding-top: 5px;
   & svg {
     width: 100%;
-    cursor: url(/assets/brush.svg) 8 22, auto;
   }
 `;
 export const StControls = styled.section``;
 export const StSwatchContainers = styled.section`
   display: grid;
-  gap: 15px;
-  padding: 5px;
   grid-template-columns: repeat(2, 1fr);
   padding-inline: 5px;
 `;
@@ -100,7 +94,6 @@ export const StButton = styled.button`
   }
 `;
 export const StSwatchButton = styled.button`
-  cursor: pointer;
   :root {
     --button-size: 50px;
   }
@@ -112,7 +105,6 @@ export const StSwatchButton = styled.button`
   margin: 0;
   padding: 0;
   & svg {
-    border-radius: 5px;
     width: 100%;
     height: 100%;
     max-height: 50px;
@@ -121,24 +113,11 @@ export const StSwatchButton = styled.button`
   }
   user-select: none;
 `;
-export const StCaption = styled.div`
-  background-color: rgba(255, 255, 255, 0.8);
+export const StCaption = styled.div<{ borderColor?: string }>`
+  background-color: white;
   padding: 0.5rem;
   border-radius: 5px;
-  border: 1px solid #eee;
-  text-align: center;
-`;
-export const StCaptionContainer = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border: 3px solid ${({ borderColor }) => borderColor};
 `;
 export const StInput = styled.input`
   background-image: none;
@@ -152,5 +131,6 @@ export const StInput = styled.input`
   outline: none;
 `;
 export const StPatternWithCaption = styled.section`
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 150px;
 `;

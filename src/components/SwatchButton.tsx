@@ -8,7 +8,6 @@ import {
 import { PatternWithDetails } from "@/components/types";
 import {
   StCaption,
-  StCaptionContainer,
   StInput,
   StPatternWithCaption,
   StSwatchButton,
@@ -25,16 +24,18 @@ export const SwatchButton: React.FC<{
   const [open, setOpen] = useState(false);
   const base = `patternIdBase_prev_${patternIndex}`;
   return (
-    <StSwatchButton>
+    <StSwatchButton
+      onClick={() => {
+        setOpen(true);
+      }}
+    >
       <StPatternWithCaption>
         <PatternPreview
           defs={<PatternDefs patterns={[pattern]} patternIdBase={base} />}
           patternIdBase={base}
           patternIndex={0}
         />
-        <StCaptionContainer>
-          <StCaption>{pattern.caption}</StCaption>
-        </StCaptionContainer>
+        <StCaption>{pattern.caption}</StCaption>
       </StPatternWithCaption>
       <MModal
         open={open}
