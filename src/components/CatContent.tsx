@@ -1,5 +1,10 @@
-import { CatMaskPaths, CatPaths, exportAsImage } from "@heypano/pupds";
-import React, { useMemo, useRef, useState } from "react";
+import {
+  CatMaskPaths,
+  CatPaths,
+  DrawWithin,
+  exportAsImage,
+} from "@heypano/pupds";
+import React, { ComponentRef, useMemo, useRef, useState } from "react";
 import { v4 as uuid } from "uuid";
 import SwatchButton from "@/components/SwatchButton";
 import { PatternWithDetails } from "@/components/types";
@@ -20,7 +25,7 @@ export default function WrappedDrawWithin() {
   const [currentPatternIndex, setCurrentPatternIndex] = useState(0);
   const [patterns, setPatterns] = useState<Array<PatternWithDetails>>([
     { caption: "Yes Please", type: "solid", fill: "#227F2280" },
-    { caption: "Definitely Not", type: "bankNote", fill: "#22227F80" },
+    { caption: "Definitely Not", type: "solid", fill: "#22227F80" },
     { caption: "Who knows?", type: "dominoes", fill: "hotpink" },
     {
       caption: "Maybe for 2 seconds",
@@ -30,12 +35,14 @@ export default function WrappedDrawWithin() {
   ]);
 
   const patternIdBase = useMemo(() => uuid(), []);
+  const drawRef = useRef<ComponentRef<typeof DrawWithin>>(null);
   return (
     <StMain>
       <h2>wheretopet.me</h2>
       <StContent ref={ref}>
         <StCat>
           <StDrawWithin
+            ref={drawRef}
             ImagePaths={<CatPaths />}
             MaskPaths={<CatMaskPaths />}
             viewBox="0 0 202.53 230.74"
@@ -74,6 +81,13 @@ export default function WrappedDrawWithin() {
               </StSwatchContainer>
             ))}
           </StSwatchContainers>
+          <StButton
+            onClick={() => {
+              drawRef.current?.removeLastPath();
+            }}
+          >
+            Undo
+          </StButton>
         </StControls>
       </StContent>
       <StSaveArea>
