@@ -111,14 +111,6 @@ export const StSwatchButton = styled.button`
   border: 0;
   margin: 0;
   padding: 0;
-  & svg {
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-    max-height: 50px;
-    //max-width: 150px;
-    //width: 100%;
-  }
   user-select: none;
 `;
 export const StCaption = styled.div`
@@ -136,8 +128,9 @@ export const StCaptionContainer = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
+  padding: 5px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 export const StInput = styled.input`
