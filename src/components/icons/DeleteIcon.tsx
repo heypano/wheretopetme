@@ -22,5 +22,5 @@ export const DeleteIcon = forwardRef<
     </svg>
   );
 });
-
+DeleteIcon.displayName = "DeleteIcon";
 export default DeleteIcon;

@@ -23,5 +23,6 @@ export const DownloadIcon = forwardRef<
     </svg>
   );
 });
+DownloadIcon.displayName = "DownloadIcon";
 
 export default DownloadIcon;
