@@ -81,25 +81,64 @@ export default function WrappedDrawWithin() {
               </StSwatchContainer>
             ))}
           </StSwatchContainers>
-          <StButton
-            onClick={() => {
-              drawRef.current?.removeLastPath();
-            }}
-          >
-            Undo
-          </StButton>
         </StControls>
       </StContent>
       <StSaveArea>
         <StButton
           onClick={() => {
+            drawRef.current?.removeLastPath();
+          }}
+        >
+          Undo
+        </StButton>
+        <StButton
+          onClick={() => {
             if (ref.current) {
+              // Save the current screen size
+              const originalWidth = window.innerWidth;
+              const originalHeight = window.innerHeight;
+
+              // Mock the screen size
+              // Object.defineProperty(window, "innerWidth", {
+              //   writable: true,
+              //   configurable: true,
+              //   value: 1080,
+              // });
+              // Object.defineProperty(window, "innerHeight", {
+              //   writable: true,
+              //   configurable: true,
+              //   value: 1080,
+              // });
+              const editIcons = document.querySelectorAll(
+                "[data-icon=edit-icon]"
+              );
+              // hide then show edit icons
+              [...editIcons].forEach((icon) => {
+                (icon as SVGSVGElement).style.display = "none";
+              });
               exportAsImage({
                 imageFileName: "wheretopet_CATNAME.png",
                 element: ref.current,
+                width: 700,
+                height: 700,
               }).then(() => {
                 console.log("saved");
               });
+              [...editIcons].forEach((icon) => {
+                (icon as SVGSVGElement).style.display = "block";
+              });
+
+              // Restore the original screen size
+              // Object.defineProperty(window, "innerWidth", {
+              //   writable: true,
+              //   configurable: true,
+              //   value: originalWidth,
+              // });
+              // Object.defineProperty(window, "innerHeight", {
+              //   writable: true,
+              //   configurable: true,
+              //   value: originalHeight,
+              // });
             }
           }}
         >

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { PropsWithClassName } from "@heypano/pupds";
 
-export const DownloadIcon: React.FC<React.HTMLAttributes<SVGElement>> = (
-  props
-) => {
+export const DownloadIcon = forwardRef<
+  SVGSVGElement,
+  React.HTMLAttributes<SVGSVGElement>
+>((props, ref) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,6 +13,7 @@ export const DownloadIcon: React.FC<React.HTMLAttributes<SVGElement>> = (
       strokeWidth={1.5}
       stroke="currentColor"
       {...props}
+      ref={ref}
     >
       <path
         strokeLinecap="round"
@@ -20,6 +22,7 @@ export const DownloadIcon: React.FC<React.HTMLAttributes<SVGElement>> = (
       />
     </svg>
   );
-};
+});
+DownloadIcon.displayName = "DownloadIcon";
 
 export default DownloadIcon;

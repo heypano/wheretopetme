@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import MModal from "@/components/MModal";
 import {
   ColorPatternPicker,
@@ -26,6 +26,7 @@ const StEditIcon = styled(EditIcon)`
   padding: 3px;
 `;
 const StPatternPreview = styled(PatternPreview)`
+  display: flex;
   svg {
     border-radius: 5px;
     max-height: 50px;
@@ -54,6 +55,7 @@ export const SwatchButton: React.FC<{
           <StCaption>{pattern.caption}</StCaption>
           <StSwatchControls>
             <StEditIcon
+              data-icon="edit-icon"
               onClick={() => {
                 setOpen(true);
               }}
