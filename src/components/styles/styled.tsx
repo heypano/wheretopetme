@@ -57,12 +57,8 @@ export const StSwatchContainers = styled.section`
 export const StContent = styled.section`
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: 1fr;
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
-  }
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
   justify-content: space-between;
 `;
 export const StSaveArea = styled.section`
