@@ -1,55 +1,19 @@
 import React, { useState } from "react";
 import MModal from "@/components/MModal";
-import styled from "styled-components";
-import { ColorPatternPicker, PatternPreview } from "@heypano/pupds";
+import {
+  ColorPatternPicker,
+  PatternDefs,
+  PatternPreview,
+} from "@heypano/pupds";
 import { PatternWithDetails } from "@/components/types";
-import { PatternDefs } from "@heypano/pupds";
+import {
+  StCaption,
+  StInput,
+  StPatternWithCaption,
+  StSwatchButton,
+} from "@/components/styles/styled";
 
 const buttonSize = 50;
-const StSwatchButton = styled.button`
-  :root {
-    --button-size: 50px;
-  }
-  display: grid;
-  align-items: center;
-  background-color: transparent;
-  box-shadow: none;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  & svg {
-    width: 100%;
-    height: 100%;
-    max-height: 40px;
-    //max-width: 150px;
-    //width: 100%;
-  }
-  user-select: none;
-`;
-
-const StCaption = styled.div<{ borderColor?: string }>`
-  background-color: white;
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: 3px solid ${({ borderColor }) => borderColor};
-`;
-
-const StInput = styled.input`
-  background-image: none;
-  width: 100%;
-  padding: 10px;
-  font-size: 1rem;
-  border-color: #ccc;
-  border-width: 1px;
-  border-style: dotted;
-  border-width: 7px;
-  outline: none;
-`;
-
-const StPatternWithCaption = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 100px;
-`;
 
 export const SwatchButton: React.FC<{
   pattern: PatternWithDetails;
