@@ -4,13 +4,21 @@ import {
   DrawWithin,
   exportAsImage,
 } from "@heypano/pupds";
-import React, { ComponentRef, useMemo, useRef, useState } from "react";
+import React, {
+  ComponentRef,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { v4 as uuid } from "uuid";
 import SwatchButton from "@/components/SwatchButton";
 import { PatternWithDetails } from "@/components/types";
 import {
   StButton,
   StCat,
+  StCatNameArea,
+  StCatNameInput,
   StContent,
   StControls,
   StDrawWithin,
@@ -33,13 +41,45 @@ export default function WrappedDrawWithin() {
       fill: "#227F2280",
     },
   ]);
-
+  const [catName, setCatName] = useState("");
   const patternIdBase = useMemo(() => uuid(), []);
   const drawRef = useRef<ComponentRef<typeof DrawWithin>>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const catNameRef = useRef<HTMLHeadingElement>(null);
+  const [isPrinting, setIsPrinting] = useState(false);
+
+  // Printing logic
+  useEffect(() => {
+    if (isPrinting && ref.current) {
+      exportAsImage({
+        imageFileName: "wheretopet_CATNAME.png",
+        element: ref.current,
+        width: 700,
+        height: 700,
+      }).finally(() => {
+        setIsPrinting(false);
+      });
+    }
+  }, [isPrinting]);
+
   return (
     <StMain>
-      <h2>wheretopet.me</h2>
       <StContent ref={ref}>
+        <StCatNameArea ref={catNameRef}>
+          <h2 style={{ fontSize: "30px" }}>
+            Where to pet {isPrinting ? catName : ""}
+            {!isPrinting && (
+              <StCatNameInput
+                ref={nameInputRef}
+                value={catName}
+                style={{ fontSize: "30px" }}
+                onChange={(e) => {
+                  setCatName(e.target.value);
+                }}
+              />
+            )}
+          </h2>
+        </StCatNameArea>
         <StCat>
           <StDrawWithin
             ref={drawRef}
@@ -62,6 +102,7 @@ export default function WrappedDrawWithin() {
                 }}
               >
                 <SwatchButton
+                  showButtons={!isPrinting}
                   pattern={pattern}
                   patternIdBase={patternIdBase}
                   patternIndex={index}
@@ -93,53 +134,7 @@ export default function WrappedDrawWithin() {
         </StButton>
         <StButton
           onClick={() => {
-            if (ref.current) {
-              // Save the current screen size
-              const originalWidth = window.innerWidth;
-              const originalHeight = window.innerHeight;
-
-              // Mock the screen size
-              // Object.defineProperty(window, "innerWidth", {
-              //   writable: true,
-              //   configurable: true,
-              //   value: 1080,
-              // });
-              // Object.defineProperty(window, "innerHeight", {
-              //   writable: true,
-              //   configurable: true,
-              //   value: 1080,
-              // });
-              const editIcons = document.querySelectorAll(
-                "[data-icon=edit-icon]"
-              );
-              // hide then show edit icons
-              [...editIcons].forEach((icon) => {
-                (icon as SVGSVGElement).style.display = "none";
-              });
-              exportAsImage({
-                imageFileName: "wheretopet_CATNAME.png",
-                element: ref.current,
-                width: 700,
-                height: 700,
-              }).then(() => {
-                console.log("saved");
-              });
-              [...editIcons].forEach((icon) => {
-                (icon as SVGSVGElement).style.display = "block";
-              });
-
-              // Restore the original screen size
-              // Object.defineProperty(window, "innerWidth", {
-              //   writable: true,
-              //   configurable: true,
-              //   value: originalWidth,
-              // });
-              // Object.defineProperty(window, "innerHeight", {
-              //   writable: true,
-              //   configurable: true,
-              //   value: originalHeight,
-              // });
-            }
+            setIsPrinting(true);
           }}
         >
           Save

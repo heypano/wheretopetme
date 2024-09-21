@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react";
-import { PropsWithClassName } from "@heypano/pupds";
 
 export const EditIcon = forwardRef<
   SVGSVGElement,
