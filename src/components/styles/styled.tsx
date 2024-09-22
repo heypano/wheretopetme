@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { DrawWithin } from "@heypano/pupds";
+import { DrawWithin, PatternPreview } from "@heypano/pupds";
+import EditIcon from "@/components/icons/EditIcon";
 
 export const StDrawWithin = styled(DrawWithin)`
   min-height: 0;
@@ -58,7 +59,7 @@ export const StContent = styled.section`
   flex: 1;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr auto;
   justify-content: space-between;
 `;
 export const StSaveArea = styled.section`
@@ -142,4 +143,68 @@ export const StInput = styled.input`
 `;
 export const StPatternWithCaption = styled.section`
   position: relative;
+`;
+export const StCatNameArea = styled.section`
+  flex: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  h2 {
+    flex: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+`;
+export const StCatNameInput = styled.input`
+  box-sizing: border-box;
+  line-height: 1;
+  margin: 0px;
+  flex: 1;
+  min-width: 0;
+  max-width: 220px;
+  border-width: 0px;
+  border-bottom-width: 1px;
+  box-shadow: none;
+  outline: none;
+  font-size: 24px;
+  padding: 0px;
+  vertical-align: baseline;
+`;
+export const StSwatchControls = styled.section`
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+`;
+export const StEditIcon = styled(EditIcon)`
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+`;
+export const StPatternPreview = styled(PatternPreview)`
+  display: flex;
+  svg {
+    border-radius: 5px;
+    max-height: 50px;
+    width: 100%;
+    height: 100%;
+  }
+`;
+export const StModalContent = styled.section`
+  overflow-y: hidden;
+  padding: 16px;
+  user-select: none;
+`;
+export const StModalFooter = styled.section``;
+export const StModalContainer = styled.section`
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100%; /* Assuming modal takes full height */
+  overflow: hidden; /* Prevent overflow on the modal */
+  user-select: none;
+  &,
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
 `;

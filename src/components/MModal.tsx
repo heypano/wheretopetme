@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-modal";
-import styled from "styled-components";
+import {
+  StModalContainer,
+  StModalContent,
+  StModalFooter,
+} from "@/components/styles/styled";
 
 Modal.setAppElement("body");
 
@@ -10,23 +14,6 @@ type MModalProps = {
   footer?: React.ReactNode;
 };
 
-const StModalContent = styled.section`
-  overflow-y: hidden;
-  padding: 16px;
-  user-select: none;
-`;
-const StModalFooter = styled.section``;
-const StModalContainer = styled.section`
-  display: grid;
-  grid-template-rows: 1fr auto;
-  height: 100%; /* Assuming modal takes full height */
-  overflow: hidden; /* Prevent overflow on the modal */
-  user-select: none;
-  &,
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
-`;
 const MModal: React.FC<React.PropsWithChildren<MModalProps>> = ({
   children,
   open,
