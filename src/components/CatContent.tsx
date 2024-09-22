@@ -73,6 +73,7 @@ export default function WrappedDrawWithin() {
                 ref={nameInputRef}
                 value={catName}
                 style={{ fontSize: "30px" }}
+                placeholder="Your cat's name here"
                 onChange={(e) => {
                   setCatName(e.target.value);
                 }}
