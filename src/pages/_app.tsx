@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     touch-action: none;
     overflow-scrolling: touch;
+    overscroll-behavior: none;
   }
 
   html, body, #__next{
