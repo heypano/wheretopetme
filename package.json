@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@heypano/pupds": "^2.0.27",
+    "@heypano/pupds": "2.0.30",
     "@types/node": "22.5.5",
     "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",

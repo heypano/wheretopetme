@@ -3,6 +3,7 @@ import { DrawWithin, PatternPreview } from "@heypano/pupds";
 import EditIcon from "@/components/icons/EditIcon";
 
 export const StDrawWithin = styled(DrawWithin)`
+  width: auto;
   min-height: 0;
 `;
 export const StSwatchContainer = styled.section<{ selected: boolean }>`
@@ -44,7 +45,9 @@ export const StCat = styled.section`
   padding-top: 5px;
   & svg {
     width: 100%;
-    cursor: url(/assets/brush.svg) 8 22, auto;
+    cursor:
+      url(/assets/brush.svg) 8 22,
+      auto;
   }
 `;
 export const StControls = styled.section``;
@@ -79,20 +82,23 @@ export const StButton = styled.button`
   transition: all 0.3s ease;
   outline: none;
   position: relative;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2),
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.2),
     inset 0 1px 4px rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(4px);
 
   &:hover {
     background: linear-gradient(135deg, #2575fc, #6a11cb);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
+    box-shadow:
+      0 6px 20px rgba(0, 0, 0, 0.3),
       inset 0 1px 6px rgba(255, 255, 255, 0.4);
     transform: translateY(-3px);
   }
 
   &:active {
     transform: translateY(1px);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2),
+    box-shadow:
+      0 3px 10px rgba(0, 0, 0, 0.2),
       inset 0 1px 3px rgba(255, 255, 255, 0.2);
   }
 `;

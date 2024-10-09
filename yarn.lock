@@ -51,10 +51,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.1.tgz#de633db3ec2ef6a3c89e2f19038063e8a122e2c2"
   integrity sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==
 
-"@heypano/pupds@^2.0.27":
-  version "2.0.27"
-  resolved "https://registry.yarnpkg.com/@heypano/pupds/-/pupds-2.0.27.tgz#8aadee2416d13aa8f1ec1819ac6acf8bf89656e3"
-  integrity sha512-bWJ6gy7syXjBolbz8i/qsNWMgO6UCSMcpnfaJrtu4FzAG3D3Xxjku50kQ/j/4G1xgZToMftoOa+PAR8Kk3qSmw==
+"@heypano/pupds@2.0.30":
+  version "2.0.30"
+  resolved "https://registry.yarnpkg.com/@heypano/pupds/-/pupds-2.0.30.tgz#ff28f0de828a8f804a49a5f77a250fcc7b52c8cc"
+  integrity sha512-B1boCqGBjDHPSYIyIuAsDvJ6kYhQWoiVFiUXtYrG/kMW9txDx5cb+4uuQPdoU3cWuX1fE6tDkti5pRgmOq2Qqw==
   dependencies:
     html2canvas "^1.4.1"
     react-color "^2.19.3"
@@ -2567,7 +2567,7 @@ typed-array-length@^1.0.6:
     is-typed-array "^1.1.13"
     possible-typed-array-names "^1.0.0"
 
-typescript@5.6.0:
+typescript@5.5.4:
   version "5.5.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.4.tgz#d9852d6c82bad2d2eda4fd74a5762a8f5909e9ba"
   integrity sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==
